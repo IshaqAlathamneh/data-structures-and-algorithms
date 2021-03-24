@@ -102,9 +102,10 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
-const sortByLength = (arr) => {
+
+const sortByPrice = (arr) => {
   // Solution code here...
-  arr.sort((a,b) => a.length - b.length);
+  arr.sort((a,b) => a.price - b.price);
   return arr;
 };
 
