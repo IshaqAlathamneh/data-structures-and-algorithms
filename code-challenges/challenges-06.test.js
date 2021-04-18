@@ -185,64 +185,80 @@ return found;
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
-
 Write a function named hasChildrenEntries that is similar to your hasChildrenValues function from challenge 4, but uses the data's entries instead of its values.
-
 The input and output of this function are the same as the input and output from challenge 3.
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  let hasChild = 0;
+  arr.forEach(obj => {
+    if (obj.name == character) {
+      hasChild = Object.entries(obj)[2][1].length;
+    }
+  });
+  return hasChild;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
-
 Write a function named totalCharacters that takes in an array and returns the number of characters in the array.
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  let sum = 0;
+  arr.forEach(char => {
+    sum += 1;
+    sum += Object.values(char)[2].length;
+    sum += (Object.values(char)[1]) ? 1 : 0;
+  });
+  return sum;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
-
 Write a function named houseSize that takes in the array of characters and creates an object for each house containing the name of the house and the number of members.
-
 All of these objects should be added to an array named "sizes". Return the "sizes" array from the function.
-
 For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
+  arr.forEach(char => {
+    sizes.push({
+      house: Object.values(char)[3],
+      members: 1 + Object.values(char)[2].length + ((Object.values(char)[1]) ? 1 : 0)
+    });
+  });
   return sizes;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
-
 As fans are well aware, "When you play the game of thrones, you win or you die. There is no middle ground."
-
 We will assume that Alerie Tyrell is deceased. She missed her daughter's wedding. Twice.
-
 Write a function named houseSurvivors. You may modify your houseSize function from challenge 6 to use as the basis of this function.
-
 This function should create an object for each house containing the name of the house and the number of members. If the spouse is deceased, do not include him/her in the total number of family members.
-
 All of these objects should be added to an array named "survivors". Return the "survivors" array from the function.
-
 For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
-  const survivors = [];
   // Solution code here...
-  return survivors;
+  const survivors = [];
+  arr.forEach(char => {
+    survivors.push({
+      house: Object.values(char)[3],
+      members: 1 + Object.values(char)[2].length + (Object.values(char)[1] && (!deceasedSpouses.includes(Object.values(char)[1])) ? 1 : 0)
+    });
+  });
+  return survivors.sort((a, b) => {
+    return a.members - b.members;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -309,7 +325,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
   });
@@ -319,20 +335,20 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the number of characters in the array', () => {
     expect(totalCharacters(characters)).toStrictEqual(26);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return an object for each house containing the name and size', () => {
     expect(houseSize(characters)[1]).toStrictEqual({ house: 'Snow', members: 1 });
     expect(houseSize(characters).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should not include any deceased spouses', () => {
     expect(houseSurvivors(characters)).toStrictEqual([{ house: 'Greyjoy', members: 1 }, { house: 'Snow', members: 1 }, { house: 'Arryn', members: 2 }, { house: 'Tyrell', members: 3 }, { house: 'Lannister', members: 4 }, { house: 'Targaryen', members: 4 }, { house: 'Stark', members: 6 }]);
   });

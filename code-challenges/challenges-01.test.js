@@ -71,7 +71,7 @@ const speaker = (words, callback) => {
   // Solution code here...
   let newWords = [];
   words.forEach(element => {
-    newWords.push(callback(element));
+    newWords.push(callback(element))
   });
   return newWords;
 };
@@ -99,8 +99,8 @@ const addValues = (arr, value) => {
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
-  for (let i = 0; i < times; i++){
-    addValues(arr, num);
+  for (let index = 0; index < times; index++) {
+    callback(arr,num)
   }
   return arr;
 };
@@ -125,19 +125,14 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   // Solution code here...
-  let inventory = [
-    { name: 'apples', available: true },
-    { name: 'pears', available: true },
-    { name: 'oranges', available: false },
-    { name: 'bananas', available: true },
-    { name: 'blueberries', available: false }
-  ]
+  
   let avaArr = [];
-  inventory.forEach(element => {
-    if (element.available){
-      avaArr.push(element.name);
-    };
+  availableItems.forEach(element => {
+    if( element.available){
+      avaArr.push(element.name)
+    }
   });
+  
   return avaArr;
 };
 
@@ -159,16 +154,16 @@ const fizzbuzz = (arr) => {
   // Solution code here...
   let outArr = [];
   arr.forEach(element => {
-    if (element % 3 === 0 || element % 5 === 0){
-    if(element % 5){
-      outArr.push('Fizz');
-    }else if(element % 3){
-      outArr.push('Buzz');
+    if(element%3 == 0 && element%5 == 0){
+      outArr.push('Fizz Buzz')
     }else{
-      outArr.push('Fizz Buzz');
-    }
-  }else {
-      outArr.push(element);
+      if(element%3 == 0){
+        outArr.push('Fizz')
+      }else if(element%5 == 0){
+        outArr.push('Buzz')
+      }else{
+        outArr.push(element)
+      }
     }
   });
   return outArr;
@@ -225,7 +220,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {

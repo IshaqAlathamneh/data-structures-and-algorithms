@@ -157,146 +157,162 @@ const reversedString = (str) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
-
 Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
 ------------------------------------------------------------------------------------------------ */
 
-const characters = [
-  {
-    name: 'Eddard',
-    spouse: 'Catelyn',
-    children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-    house: 'Stark',
-  },
-  {
-    name: 'Jon',
-    spouse: 'Lysa',
-    children: ['Robin'],
-    house: 'Arryn',
-  },
-  {
-    name: 'Cersei',
-    spouse: 'Robert',
-    children: ['Joffrey', 'Myrcella', 'Tommen'],
-    house: 'Lannister',
-  },
-  {
-    name: 'Daenarys',
-    spouse: 'Khal Drogo',
-    children: ['Drogon', 'Rhaegal', 'Viserion'],
-    house: 'Targaryen',
-  },
-  {
-    name: 'Mace',
-    spouse: 'Alerie',
-    children: ['Margaery', 'Loras'],
-    house: 'Tyrell',
-  },
-  {
-    name: 'Sansa',
-    spouse: 'Tyrion',
-    house: 'Stark',
-  },
-  {
-    name: 'Jon',
-    spouse: null,
-    house: 'Snow',
-  },
+const characters = [{
+  name: 'Eddard',
+  spouse: 'Catelyn',
+  children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
+  house: 'Stark',
+},
+{
+  name: 'Jon',
+  spouse: 'Lysa',
+  children: ['Robin'],
+  house: 'Arryn',
+},
+{
+  name: 'Cersei',
+  spouse: 'Robert',
+  children: ['Joffrey', 'Myrcella', 'Tommen'],
+  house: 'Lannister',
+},
+{
+  name: 'Daenarys',
+  spouse: 'Khal Drogo',
+  children: ['Drogon', 'Rhaegal', 'Viserion'],
+  house: 'Targaryen',
+},
+{
+  name: 'Mace',
+  spouse: 'Alerie',
+  children: ['Margaery', 'Loras'],
+  house: 'Tyrell',
+},
+{
+  name: 'Sansa',
+  spouse: 'Tyrion',
+  house: 'Stark',
+},
+{
+  name: 'Jon',
+  spouse: null,
+  house: 'Snow',
+},
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
-};
+// Solution code here...
+return arr.reduce((acc, elem) => {
+  return (elem.children) ? acc + elem.children.length : acc;
+}, 0)
+}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
-
 Write a function that, given an array of numbers as input, uses reduce to calculate the array's average value.
-
 Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+// Solution code here...
+let process = arr.reduce((acc, val) => {
+  acc.count += 1;
+  acc.sum += val;
+  return acc;
+}, { count: 0, sum: 0 });
+return process.sum / process.count;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
-
 Write a function named countPrimeNumbers that, given an array elements as input, uses reduce to count the number of elements that are prime numbers.
-
 You are welcome to use the provided isPrime function.
 ------------------------------------------------------------------------------------------------ */
 
 const isPrime = (value) => {
-  for (let i = 2; i < value; i++) {
-    if (value % i === 0) {
-      return false;
-    }
+for (let i = 2; i < value; i++) {
+  if (value % i === 0) {
+    return false;
   }
-  return value > 1;
+}
+return value > 1;
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
-};
+// Solution code here...
+return arr.reduce((accum, elem) => {
+  return isPrime(elem) ? ++accum : accum;
+}, 0)
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
-
 Write a function named extractState that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
-
 If the input array does not have a stat with that specific name, the function should return null.
 ------------------------------------------------------------------------------------------------ */
 
 const snorlaxData = {
-  stats: [
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/6/',
-        name: 'speed',
-      },
-      effort: 5,
-      baseStat: 30,
+stats: [{
+    stat: {
+      url: 'https://pokeapi.co/api/v2/stat/6/',
+      name: 'speed',
     },
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/5/',
-        name: 'special-defense',
-      },
-      effort: 2,
-      baseStat: 110,
+    effort: 5,
+    baseStat: 30,
+  },
+  {
+    stat: {
+      url: 'https://pokeapi.co/api/v2/stat/5/',
+      name: 'special-defense',
     },
-    {
-      stat: {
-        url: 'https://pokeapi.co/api/v2/stat/4/',
-        name: 'special-attack',
-      },
-      effort: 9,
-      baseStat: 65,
+    effort: 2,
+    baseStat: 110,
+  },
+  {
+    stat: {
+      url: 'https://pokeapi.co/api/v2/stat/4/',
+      name: 'special-attack',
     },
-  ],
-  name: 'snorlax',
-  weight: 4600,
+    effort: 9,
+    baseStat: 65,
+  },
+],
+name: 'snorlax',
+weight: 4600,
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+// Solution code here...
+let result = arr.reduce((acc, val) => {
+  if (val.stat.name == statName) {
+    acc = val;
+    return acc;
+  }
+  return acc;
+}, {});
+return (result.stat) ? result : null;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
-
 Write a function named extractChildren that, given the array of characters from challenge 4, accomplishes the following:
-
 1) Uses filter to return an array of the characters that contain the letter 'a' in their name
-
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  // Solution code here...
+// Solution code here...
+let process = arr.filter(elem => {
+  return elem.name.toUpperCase().includes('A');
+});
+return process.reduce((accum, item) => {
+  return (item.children) ? accum.concat(item.children) : accum;
+}, []);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -350,31 +366,31 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return any stats that match the input', () => {
     expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
     expect(extractChildren(characters).length).toStrictEqual(10);
