@@ -1,4 +1,4 @@
-function insertShiftArray (arr, val) {
+module.exports = function insertShiftArray (arr, val) {
     let newArr = [];
     for (let index = 0; index < arr.length; index++) {
         const element = arr[index];

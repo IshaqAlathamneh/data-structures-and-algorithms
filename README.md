@@ -18,5 +18,5 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 | Table Of Content  | 
 | :-----------------: | 
- | [array-reverse](https://ishaqalathamneh.github.io/reading-notes/401read/)        |  
-| [array-shift](https://ishaqalathamneh.github.io/reading-notes/401read/read01)| 
+ | [array-reverse](https://github.com/IshaqAlathamneh/data-structures-and-algorithms/blob/main/challenges/arrayReverse/README.md)        |  
+| [array-shift](https://github.com/IshaqAlathamneh/data-structures-and-algorithms/blob/main/challenges/arrayShift/README.md)| 
