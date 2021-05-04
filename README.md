@@ -20,3 +20,4 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 | :-----------------: | 
  | [array-reverse](https://github.com/IshaqAlathamneh/data-structures-and-algorithms/blob/main/challenges/arrayReverse/README.md)        |  
 | [array-shift](https://github.com/IshaqAlathamneh/data-structures-and-algorithms/blob/main/challenges/arrayShift/README.md)| 
+| [array-binary-search](https://github.com/IshaqAlathamneh/data-structures-and-algorithms/blob/main/challenges/arrayBinarySearch/README.md)| 
