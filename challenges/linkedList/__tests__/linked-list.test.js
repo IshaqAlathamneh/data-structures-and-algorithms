@@ -3,61 +3,65 @@
 let LinkedList = require('../linked-list')
 
 describe('Linked List', ()=> {
-    it('instantiate an empty linked list', ()=> {
-        let list = new LinkedList();
-        expect(list.head).toBeNull();
-    });
 
-    it('insert into the linked list', ()=> {
+    it('insert into the end of linked list multiple times', ()=> {
         const list = new LinkedList();
         const firstValue = 'Fist Value';
-        list.insert(firstValue);
-        expect(list.head.value).toEqual(firstValue);
-        
         const secondValue =  'Second Value';
-        list.insert(secondValue);
-        expect(list.head.value).toEqual(firstValue);
-        expect(list.head.next.value).toEqual(secondValue);
-
         const thirdValue =  'Third Value';
-        list.insert(thirdValue);
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        
         expect(list.head.value).toEqual(firstValue);
         expect(list.head.next.value).toEqual(secondValue);
         expect(list.head.next.next.value).toEqual(thirdValue);
 
     });
-    it('The head property will properly point to the first node in the linked list', ()=> {
+    it('Can successfully insert a node before a node located i the middle of a linked list', ()=> {
         const list = new LinkedList();
         const firstValue = 'Fist Value';
-        list.insert(firstValue);
         const secondValue =  'Second Value';
-        list.insert(secondValue);
-        expect(list.head.value).toEqual(firstValue);
-        expect(list.head.next.value).toEqual(secondValue);
+        const thirdValue =  'Third Value';
+        const newVal = 'newValue';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        list.insertBefore(secondValue,newVal)
+        console.log(list.head);
+        expect(list.head.next.value).toEqual(newVal);
+        expect(list.head.next.next.value).toEqual(secondValue);
+        
 
     });
-    it('Can properly insert multiple nodes into the linked list', ()=> {
+    it('Can successfully insert a node before the first node of a linked list', ()=> {
         const list = new LinkedList();
         const firstValue = 'Fist Value';
         const secondValue =  'Second Value';
-        list.insert(firstValue).insert(secondValue);
-        expect(list.head.value).toEqual(firstValue);
-        expect(list.head.next.value).toEqual(secondValue);
+        const thirdValue =  'Third Value';
+        const newVal = 'newValue';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        list.insertBefore(firstValue,newVal)
+        expect(list.head.next.value).toEqual(firstValue);
+        expect(list.head.value).toEqual(newVal);
     });
-    it('return true or false id the value exists in linked list', ()=> {
+    it('Can successfully insert after a node in the middle of the linked list', ()=> {
         const list = new LinkedList();
         const firstValue = 'Fist Value';
         const secondValue =  'Second Value';
-        list.insert(firstValue);
-        expect(list.includes(firstValue)).toEqual(true);
-        expect(list.includes(secondValue)).toEqual(false);
+        const thirdValue =  'Third Value';
+        const newVal = 'newValue';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        list.insertAfter(firstValue,newVal)
+        expect(list.head.next.value).toEqual(newVal);
+        expect(list.head.next.next.value).toEqual(secondValue);
     });
-    it('return a collection of all the values that exist in the linked list', ()=> {
+    it('Can successfully insert a node after the last node of the linked list', ()=> {
         const list = new LinkedList();
         const firstValue = 'Fist Value';
         const secondValue =  'Second Value';
-        list.insert(firstValue);
-        list.insert(secondValue);
-        expect(list.toString()).toEqual('{ Fist Value } -> { Second Value } -> NULL');
+        const thirdValue =  'Third Value';
+        const newVal = 'newValue';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        list.insertAfter(thirdValue,newVal)
+        // console.log(list.head);
+        expect(list.head.next.next.next.next).toBeFalsy();
+        expect(list.head.next.next.next.value).toEqual(newVal);
     });
 })
