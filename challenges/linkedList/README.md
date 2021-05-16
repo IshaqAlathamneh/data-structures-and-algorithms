@@ -11,3 +11,6 @@ I used classes and it was easy.
 - [x] Update readme file
 - [x] Create a test
 - [x] Net, clean and flexable code
+
+## Solution
+![LL](../../assets/LL.png)
