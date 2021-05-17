@@ -64,6 +64,25 @@ class LinkedList {
 
         return 'Exception';
     }
+    kthFromEnd(k){
+        let currentNode = this.head;
+        let myArr = [];
+        if (k < 0) {
+            return 'Exception';
+        }
+        while(currentNode.next){
+            
+            myArr.push(currentNode.value)
+            currentNode = currentNode.next;
+            
+        };
+        myArr.push(currentNode.value)
+        if (myArr.length > k) {
+            return myArr[myArr.length - (k + 1)];
+        }
+
+        return 'Exception';
+    }
     includes(value) {
         let currentNode = this.head;
         let checked = false;

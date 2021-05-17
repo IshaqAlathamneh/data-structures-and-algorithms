@@ -65,3 +65,64 @@ describe('Linked List', ()=> {
         expect(list.head.next.next.next.value).toEqual(newVal);
     });
 })
+
+describe('Linked List Two', ()=> {
+
+    it('Where k is greater than the length of the linked list', ()=> {
+        const list = new LinkedList();
+        const firstValue = 'Fist Value';
+        const secondValue =  'Second Value';
+        const thirdValue =  'Third Value';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        
+        let a = list.kthFromEnd(4)
+    
+        expect(a).toEqual('Exception');
+
+    });
+    it('Where k and the length of the list are the same', ()=> {
+        const list = new LinkedList();
+        const firstValue = 'Fist Value';
+        const secondValue =  'Second Value';
+        const thirdValue =  'Third Value';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        
+        let a = list.kthFromEnd(3)
+    
+        expect(a).toEqual('Exception');
+        
+
+    });
+    it('Where k is not a positive integer', ()=> {
+        const list = new LinkedList();
+        const firstValue = 'Fist Value';
+        const secondValue =  'Second Value';
+        const thirdValue =  'Third Value';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        
+        let a = list.kthFromEnd(-4)
+    
+        expect(a).toEqual('Exception');
+    });
+    it('Where the linked list is of a size 1', ()=> {
+        const list = new LinkedList();
+        const firstValue = 'Fist Value';
+        
+        list.insert(firstValue)
+        
+        let a = list.kthFromEnd(0)
+    
+        expect(a).toEqual(firstValue);
+    });
+    it('“Happy Path” where k is not at the end, but somewhere in the middle of the linked list', ()=> {
+        const list = new LinkedList();
+        const firstValue = 'Fist Value';
+        const secondValue =  'Second Value';
+        const thirdValue =  'Third Value';
+        list.insert(firstValue).insert(secondValue).insert(thirdValue);
+        
+        let a = list.kthFromEnd(2)
+    
+        expect(a).toEqual(firstValue);
+    });
+})
