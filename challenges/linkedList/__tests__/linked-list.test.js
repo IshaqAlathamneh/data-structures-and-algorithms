@@ -1,6 +1,7 @@
 'use strict';
 
 let LinkedList = require('../linked-list')
+let zipLists = require('../llZip/ll-zip')
 
 describe('Linked List', ()=> {
 
@@ -24,7 +25,7 @@ describe('Linked List', ()=> {
         const newVal = 'newValue';
         list.insert(firstValue).insert(secondValue).insert(thirdValue);
         list.insertBefore(secondValue,newVal)
-        console.log(list.head);
+        // console.log(list.head);
         expect(list.head.next.value).toEqual(newVal);
         expect(list.head.next.next.value).toEqual(secondValue);
         
@@ -124,5 +125,31 @@ describe('Linked List Two', ()=> {
         let a = list.kthFromEnd(2)
     
         expect(a).toEqual(firstValue);
+    });
+})
+
+describe('Merge linked lists', ()=> { 
+    it('If the at the same length or different lengths', ()=> {
+        const list1 = new LinkedList();
+        const firstValue = 'Fist Value';
+        const secondValue =  'Second Value';
+        const thirdValue =  'Third Value';
+        list1.insert(firstValue).insert(secondValue).insert(thirdValue);
+        // console.log(list1);
+        const list2 = new LinkedList();
+        list2.insert(firstValue).insert(secondValue).insert(thirdValue);
+        // console.log(list2);
+        const list3 = new LinkedList();
+        list3.insert(firstValue).insert(firstValue).insert(secondValue).insert(secondValue).insert(thirdValue).insert(thirdValue);
+        console.log(list3);
+        const a = zipLists(list1, list2)
+        console.log('fun',a);
+        console.log('list',list3.head);
+        expect(a.value).toEqual(firstValue);
+        expect(a.next.value).toEqual(firstValue);
+        expect(a.next.next.value).toEqual(secondValue);
+        expect(a.next.next.next.value).toEqual(secondValue);
+        expect(a.next.next.next.next.value).toEqual(thirdValue);
+        expect(a.next.next.next.next.next.value).toEqual(thirdValue);
     });
 })
