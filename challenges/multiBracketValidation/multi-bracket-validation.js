@@ -1,15 +1,11 @@
 'use strict';
 const stack = require('../stacksAndQueues/stacks-and-queues').stack;
 function multiBracketValidation(input) {
-    let chara = ['(' , ')' , '{' , '}' , '[' , ']']
     let openChara = ['(', '{', '[']
     let closeChara = [')', '}', ']']
-    let filtered = input.split('').filter( x => chara.includes(x));
-    console.log(filtered);
     let n = 0;
-    let checked = 0;
     let myStack = new stack()
-    filtered.forEach(element => {
+    for(let element of input) {
         if(openChara.includes(element)){
             n++;
             if(element == '('){
@@ -25,17 +21,13 @@ function multiBracketValidation(input) {
                 myStack.pop()
             }else{
                 console.log('----> 1false');
-                checked = 10;
+                
+                return false;
             }
         }
-        let prev = element;
-    });
-    if(n !== 0 || checked == 10){
-        console.log('----> 2false');
-        return false;
     }
     console.log('----> true');
-    return true;
+    return n == 0;
 }
 
 // multiBracketValidation('[({}]')
