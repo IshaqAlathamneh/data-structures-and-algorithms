@@ -30,6 +30,22 @@ class BinaryTree {
             console.log(err);
         }
     }
+    findMaximumValue(){
+        try{
+            let big = 0;
+            
+            let traverse = (node) => {
+                
+                node.value>big? big = node.value : big=big;
+                if (node.left) traverse(node.left);
+                if (node.right) traverse(node.right);
+            }
+            traverse(this.root);
+            return big;
+        } catch(err){
+            console.log(err);
+        }
+    }
     // In-Order: Left - Root - Right
     // Time : O(n) -> n is the number of nodes
     // Space: O(h) -> h is the height of the tree

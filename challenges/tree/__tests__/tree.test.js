@@ -90,4 +90,8 @@ describe('Binary Tree', ()=> {
         // console.log("postOrderResult: ", postOrderResult)
         expect(postOrderResult).toEqual(expected);
     });
+    it('Find the maximum value?', ()=> {
+        
+        expect(tree.findMaximumValue()).toEqual(9);
+    })
 });
