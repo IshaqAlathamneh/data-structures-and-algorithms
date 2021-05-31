@@ -61,8 +61,8 @@ describe('Binary Tree', ()=> {
         newBiSeTree.add(15)
         newBiSeTree.add(13)
         
-        console.log("2-------newBiSeTree: ", newBiSeTree.contains(13))
-        console.log("2-------newBiSeTree: ", newBiSeTree.contains(1))
+        // console.log("2-------newBiSeTree: ", newBiSeTree.contains(13))
+        // console.log("2-------newBiSeTree: ", newBiSeTree.contains(1))
         newBiSeTree.add(8)
         expect(newBiSeTree.contains(13)).toEqual(true);
         expect(newBiSeTree.contains(10)).toEqual(true);
@@ -93,5 +93,9 @@ describe('Binary Tree', ()=> {
     it('Find the maximum value?', ()=> {
         
         expect(tree.findMaximumValue()).toEqual(9);
+    })
+    it('Read Breadth first?', ()=> {
+        
+        expect(tree.breadthFirst()).toEqual([1, 2, 3, 6, 4, 5, 7, 8, 9]);
     })
 });

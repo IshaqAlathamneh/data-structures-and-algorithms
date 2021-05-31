@@ -3,6 +3,7 @@ One of the data structures.
 ## Challenge
 - Create methods to read the Tree and add to binary search and check if tree contain a value.
 - Create methods to find max value in the binary tree
+- Create methods to read the Tree with Breadth First trevarse
 
 ## Approach & Efficiency
 I used classes and it was easy.
@@ -17,3 +18,4 @@ I used classes and it was easy.
 ## Solution
 
 ![max](../../assets/findMax.png)
+![breadth](../../assets/breadth.png)
