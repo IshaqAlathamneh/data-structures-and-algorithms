@@ -102,6 +102,28 @@ class BinaryTree {
         }
         return arrBreadth;
     }
+    brFi(){
+        let arrBreadth = [];
+        const q = new Queue()
+        q.enqueue(this.root)
+        let index = 0;
+        function trevarse (node) {
+            arrBreadth[index] = node.value.value;
+            index++;
+            if(node.value.left){
+                q.enqueue(node.value.left)
+            }
+            if(node.value.right){
+                q.enqueue(node.value.right)
+            }
+            q.dequeue()
+            if(q.front){
+                trevarse(q.front)
+            }
+        }
+        trevarse(q.front)
+        return arrBreadth;
+    }
 }
 
 class BinarySearchTree {

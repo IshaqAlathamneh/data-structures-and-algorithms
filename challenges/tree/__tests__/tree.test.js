@@ -98,4 +98,8 @@ describe('Binary Tree', ()=> {
         
         expect(tree.breadthFirst()).toEqual([1, 2, 3, 6, 4, 5, 7, 8, 9]);
     })
+    it('Read Breadth first?2222222222222222222222', ()=> {
+        
+        expect(tree.brFi()).toEqual([1, 2, 3, 6, 4, 5, 7, 8, 9]);
+    })
 });
