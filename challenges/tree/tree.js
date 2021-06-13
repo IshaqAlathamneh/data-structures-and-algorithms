@@ -7,7 +7,18 @@ class Node {
         this.right = right;
     }
 }
-
+class kTreeNode {
+    constructor(val,sibling = null,child = null){
+        this.value = val;
+        this.sibling = sibling;
+        this.child = child
+    }
+}
+class kTree  {
+    constructor(val){
+        this.root = new kTreeNode(val);
+    }
+}
 class BinaryTree {
     constructor(root = null) {
         this.root = root;
@@ -199,5 +210,7 @@ class BinarySearchTree {
 module.exports = {
     Node ,
     BinaryTree,
-    BinarySearchTree
+    BinarySearchTree,
+    kTree,
+    kTreeNode
 }
