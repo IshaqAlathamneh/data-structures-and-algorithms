@@ -5,18 +5,14 @@ function Merge(left, right, arr) {
     let k = 0;
 
     while (i < left.length && j < right.length) {
-
         if (left[i] <= right[j]) {
-
             arr[k] = left[i]
             i = i + 1
         } else {
-
             arr[k] = right[j]
             j =j + 1
-
         }
-            k =k + 1
+        k =k + 1
     }
 
     if (i == left.length){
