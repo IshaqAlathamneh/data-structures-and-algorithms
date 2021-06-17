@@ -33,7 +33,7 @@ function Swap(arr, i, low){
 - we start from the leftmost element and keep track of index of smaller (or equal to) elements as i. While traversing, if we find a smaller element, we swap current element with arr[i]. Otherwise we ignore current element.
 
 ### Complexity
-* time: O(n)
+* time: O(n Log(n))
 * space: O(1)
 
 ### Trace
