@@ -145,11 +145,11 @@ describe('Merge linked lists', ()=> {
         const a = zipLists(list1, list2)
         console.log('fun',a);
         console.log('list',list3.head);
-        expect(a.value).toEqual(firstValue);
-        expect(a.next.value).toEqual(firstValue);
-        expect(a.next.next.value).toEqual(secondValue);
-        expect(a.next.next.next.value).toEqual(secondValue);
-        expect(a.next.next.next.next.value).toEqual(thirdValue);
-        expect(a.next.next.next.next.next.value).toEqual(thirdValue);
+        expect(a.head.value).toEqual(firstValue);
+        expect(a.head.next.value).toEqual(firstValue);
+        expect(a.head.next.next.value).toEqual(secondValue);
+        expect(a.head.next.next.next.value).toEqual(secondValue);
+        expect(a.head.next.next.next.next.value).toEqual(thirdValue);
+        expect(a.head.next.next.next.next.next.value).toEqual(thirdValue);
     });
 })
