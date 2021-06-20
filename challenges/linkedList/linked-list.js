@@ -41,13 +41,8 @@ class LinkedList {
     }
     insertAfter(value, newVal){
         let node = new Node(newVal);
-        // if the linkedlist i empty
-        
-        
-        // if not empty 
         let currentNode = this.head;
         while(currentNode.next){
-            
             if (currentNode.value == value) {
                 node.next = currentNode.next;
                 currentNode.next = node;
@@ -80,7 +75,6 @@ class LinkedList {
         if (myArr.length > k) {
             return myArr[myArr.length - (k + 1)];
         }
-
         return 'Exception';
     }
     includes(value) {
