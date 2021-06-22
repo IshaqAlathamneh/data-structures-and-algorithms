@@ -64,7 +64,6 @@ class Hashtable {
         // hash the key 
         // return the hashed value
         const sum = key.split('').reduce((acc, v) => acc + v.charCodeAt(0), 0);
-        console.log("sum : ", sum);
         return (sum * 19) % this.size;
     }
     add(key, value) {
@@ -95,7 +94,7 @@ class Hashtable {
         const index = this.hash(key)
         const element = this.table[index]
         if(!element) return null;
-        return element.getValues(key).filter( x => x[key])[0][key]
+        return element.getValues(key).filter( x => x[key])[0]? element.getValues(key).filter( x => x[key])[0][key]: 'NULL';
     }
 }
 

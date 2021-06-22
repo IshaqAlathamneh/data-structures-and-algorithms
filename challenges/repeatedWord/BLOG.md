@@ -1,4 +1,4 @@
-# Merge Sort
+# Repeat Word
 ### Code
 ```
 function RepeatWords(string) {
