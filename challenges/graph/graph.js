@@ -1,4 +1,4 @@
-
+const Queue = require('../stacksAndQueues/stacks-and-queues').queue;
 
 class Edge {
     constructor(vertex, weight) {
@@ -53,6 +53,24 @@ class Graph {
 
     size(){
         return this.adjacencyList.size
+    }
+    breadthFirst(vertex){
+        let arrBreadth = [];
+        const q = new Queue()
+        q.enqueue(vertex)
+        const trevarse = (node) => {
+            const adjacencies =  this.adjacencyList.get(node.value); 
+            if(!arrBreadth.includes(node.value.value)) arrBreadth.push(node.value.value);
+            adjacencies.forEach(element => {
+                if(!arrBreadth.includes(element.vertex.value)) q.enqueue(element.vertex)
+            });
+            q.dequeue()
+            if(q.front){
+                trevarse(q.front)
+            }
+        }
+        trevarse(q.front)
+        return arrBreadth.slice(1);
     }
 }
 
