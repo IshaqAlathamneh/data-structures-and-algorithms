@@ -10,7 +10,7 @@ const four = new Vertex(4);
 const five = new Vertex(5);
 myGraph.print();
 console.log(myGraph.size());
-describe('Hash Table', () => {
+describe('Graph', () => {
     beforeAll(() => {
 
         myGraph.addVertex(zero);
@@ -57,5 +57,12 @@ describe('Hash Table', () => {
         const oneGraph = new Graph()
         expect(oneGraph.adjacencyList.get(one)).toBeFalsy()
         // expect(index < 1024).toEqual(true);
+    });
+    it('Breadth First', () => {
+        console.log(myGraph.breadthFirst(one));
+        expect(myGraph.breadthFirst(one)).toEqual([ 3, 5 ]);
+        expect(myGraph.breadthFirst(zero)).toEqual([ 2, 3, 4, 5 ]);
+        expect(myGraph.breadthFirst(five)).toEqual([]);
+        expect(myGraph.breadthFirst(four)).toEqual([ 5 ]);
     });
 })
